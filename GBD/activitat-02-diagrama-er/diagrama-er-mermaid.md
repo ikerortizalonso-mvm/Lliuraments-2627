@@ -55,3 +55,48 @@ erDiagram
                 string Num_Chip PK
         }
 ```
+
+### Atributs Simples
+
+Són els atributs que no es poden dividir en parts més petites.
+
+> Representació en Mermaid: he escrit primer el tipus de dada i després el nom de l'atribut.
+
+> Exemple: he posat `string` a Nom, Cognom i Tipus perquè són text. He posat `int` a Forca, Agilitat, Carisma, Cost, Dany, Cooldown, Nivell i Motxilla perquè són números sencers. He posat `float` a Vida perquè la vida pot tenir decimals.
+
+```mermaid
+erDiagram
+        PERSONATGE {
+                string DNI PK
+                string Nom
+                string Cognom
+                float Vida
+                int Forca
+                int Agilitat
+                int Carisma
+        }
+        HABILITAT {
+                string Codi PK
+                string Nom
+                int Cost
+                int Dany
+                int Cooldown
+                string Tipus
+        }
+        ENEMIC {
+                string Codi PK
+                string Nom
+                string Tipus
+                int Nivell
+                float Vida
+                int Forca
+                int Agilitat
+                int Carisma
+        }
+        MASCOTA {
+                string Num_Chip PK
+                string Nom
+                int Motxilla
+        }
+```
+
