@@ -1,296 +1,139 @@
-# Activitat 02 - Diagrama E/R en Mermaid (Pokémon)
+# Pràctica 1: Característiques dels llenguatges de marques
 
-Diagrama E/R fet amb Markdown + Mermaid a partir del model conceptual del PDF, seguint la guia del professor. El tema que he triat és el món Pokémon.
+## Descripció
 
-## Entitats
+> [!NOTE]
+> **Objectiu:** Aprofundir i posar en pràctica els coneixements adquirits sobre l'ús i les característiques principals dels *llenguatges de marques*.
 
-Una entitat és un objecte sobre el qual volem guardar informació. En aquest model n'hi ha cinc: Entrenador, Pokemon, Moviment, Tipus i Objecte.
+> [!IMPORTANT]
+> **Desenvolupament:** En parelles.
 
-> Representació en Mermaid: he posat `erDiagram` a dalt perquè Mermaid sàpiga que és un diagrama E/R, i després el nom de cada entitat en majúscules, una per línia. He escrit els noms sense accents perquè Mermaid dona problemes amb ells.
+> [!TIP]
+> **Lliurament:** A través del `Moodle` en format presentació (`odt`, `ppt`, `pptx` o `pdf`).
 
-```mermaid
-erDiagram
-        ENTRENADOR
-        POKEMON
-        MOVIMENT
-        TIPUS
-        OBJECTE
-```
+## Enunciat
 
-## Atributs
+L’objectiu d’aquest exercici és aprofundir en els conceptes relacionats amb les característiques inherents als *llenguatges de marques* mitjançant la creació d’un **llenguatge propi**, heu de tenir en compte que, per a poder classificar la vostra creació com a llenguatge de marques, s’han de complir una sèrie de requisits:
 
-Els atributs són les característiques de cada entitat.
-
-> Representació en Mermaid: he obert unes claus `{}` després del nom de cada entitat i hi he posat els atributs a dins, un per línia.
-
-### Tipus d'Atributs
-
-#### Atribut Identificador (Clau Primària)
-
-És l'atribut que identifica cada element de l'entitat i que no es pot repetir. Al model conceptual són els que estan subratllats.
-
-> Representació en Mermaid: he afegit `PK` al final de l'atribut.
-
-> Exemple: he posat `string` al DNI de l'Entrenador perquè té números i una lletra. Al Codi de Pokemon, Moviment, Tipus i Objecte també he posat `string`, perquè són identificadors i no cal fer operacions amb ells.
-
-```mermaid
-erDiagram
-        ENTRENADOR {
-                string DNI PK
-        }
-
-        POKEMON {
-                string Codi PK
-        }
-
-        MOVIMENT {
-                string Codi PK
-        }
-
-        TIPUS {
-                string Codi PK
-        }
-
-        OBJECTE {
-                string Codi PK
-        }
-```
-
-### Atributs Simples
-
-Són els atributs que no es poden dividir en parts més petites.
-
-> Representació en Mermaid: he escrit primer el tipus de dada i després el nom de l'atribut.
-
-> Exemple: he posat `string` a Nom, Cognom, Mote, Categoria i Descripcio perquè són text. He posat `int` a Nivell, Experiencia, Potencia, Precisio, PP, Preu, Diners i Medalles perquè són números sencers. He posat `float` a Pes i Alcada perquè poden tenir decimals (per exemple 6,9 kg).
-
-```mermaid
-erDiagram
-        ENTRENADOR {
-                string DNI PK
-                string Nom
-                string Cognom
-                int Diners
-                int Medalles
-        }
-        POKEMON {
-                string Codi PK
-                string Nom
-                string Mote
-                int Nivell
-                int Experiencia
-                float Pes
-                float Alcada
-        }
-        MOVIMENT {
-                string Codi PK
-                string Nom
-                int Potencia
-                int Precisio
-                int PP
-                string Categoria
-        }
-        TIPUS {
-                string Codi PK
-                string Nom
-        }
-        OBJECTE {
-                string Codi PK
-                string Nom
-                string Descripcio
-                int Preu
-        }
-```
-
-### Atributs no nuls
-
-Són els atributs que sempre han de tenir valor. Al model conceptual són els que tenen un cercle groc.
-
-> Representació en Mermaid: he afegit `"NOT NULL"` al final de l'atribut.
-
-> Exemple: he posat `"NOT NULL"` al Nom d'Entrenador, Pokemon, Moviment, Tipus i Objecte perquè tots han de tenir nom. Al Nivell de Pokemon, a la Categoria de Moviment i a Es_Consumible d'Objecte també, perquè sempre han de tenir valor. A les claus primàries no l'he posat perquè ja són obligatòries per ser PK.
-
-```mermaid
-erDiagram
-        ENTRENADOR {
-                string DNI PK
-                string Nom "NOT NULL"
-        }
-        POKEMON {
-                string Codi PK
-                string Nom "NOT NULL"
-                int Nivell "NOT NULL"
-        }
-        MOVIMENT {
-                string Codi PK
-                string Nom "NOT NULL"
-                string Categoria "NOT NULL"
-        }
-        TIPUS {
-                string Codi PK
-                string Nom "NOT NULL"
-        }
-        OBJECTE {
-                string Codi PK
-                string Nom "NOT NULL"
-                boolean Es_Consumible "NOT NULL"
-        }
-```
-
-### Atributs Compostos
-
-Són els atributs que es poden dividir en parts més petites amb significat propi.
-
-> Representació en Mermaid: Mermaid no té sintaxi per als atributs compostos, així que he posat els components directament com a atributs simples.
-
-> Exemple: l'atribut Estadistiques de Pokemon es divideix en HP, Atac, Defensa i Velocitat, així que he posat quatre atributs: `Estadistiques_HP`, `Estadistiques_Atac`, `Estadistiques_Defensa` i `Estadistiques_Velocitat`, tots `int` perquè són números sencers. A Shiny he posat `boolean` perquè només té dos valors possibles: sí o no.
-
-```mermaid
-erDiagram
-        POKEMON {
-                string Codi PK
-                string Nom "NOT NULL"
-                string Mote
-                int Nivell "NOT NULL"
-                int Experiencia
-                boolean Shiny
-                float Pes
-                float Alcada
-                int Estadistiques_HP
-                int Estadistiques_Atac
-                int Estadistiques_Defensa
-                int Estadistiques_Velocitat
-        }
-```
-
-## Relacions
-
-Una relació és un vincle entre dues entitats.
-
-> Representació en Mermaid: he dibuixat una línia entre les dues entitats i he posat el nom de la relació després dels dos punts.
-
-### Cardinalitat de la Relació
-
-La cardinalitat s'indica amb uns símbols a cada extrem de la línia. Els que he fet servir són:
-
-    || : Exactament un
-
-    o| : Zero o un
-
-    }o : Molts o zero
-
-    o{ : Zero o molts
-
-#### Un a Un (1:1)
-
-> Exemple: a la relació Te de company he posat `||` al costat d'Entrenador i `o|` al costat de Pokemon. Vol dir que un entrenador té exactament un Pokémon company, però un Pokémon pot no ser el company de cap entrenador. He posat `o|` i no `||` perquè la majoria de Pokémon no són el company de ningú. Aquesta cardinalitat l'he decidit jo.
-
-```mermaid
-erDiagram
-        ENTRENADOR ||--o| POKEMON : "te de company"
-```
-
-#### Un a Molts (1:N)
-
-> Exemple: a la relació Captura he posat `||` al costat d'Entrenador i `o{` al costat de Pokemon. Un entrenador pot capturar molts Pokémon, però cada Pokémon només pertany a un entrenador. He posat `o{` i no `|{` perquè un entrenador pot no haver capturat cap Pokémon encara.
+> - El llenguatge s’ha de basar en **text pla**.
 >
-> A la relació Defineix he posat `||` al costat de Tipus i `o{` al costat de Moviment. Cada moviment és d'un sol tipus (per exemple, Llançaflames és de tipus Foc), però un tipus pot tenir molts moviments.
-
-```mermaid
-erDiagram
-        ENTRENADOR ||--o{ POKEMON : captura
-        TIPUS ||--o{ MOVIMENT : defineix
-```
-
-#### Molts a Molts (M:N)
-
-> Exemple: a Apren he posat `}o--o{` perquè un Pokémon pot aprendre molts moviments, i un mateix moviment el poden aprendre molts Pokémon.
+> - Ha de fer ús de **metadades** (no confondre amb metallenguatge).
 >
-> A Es de tipus (entre Pokemon i Tipus) he posat `}o--o{` perquè un Pokémon pot tenir un o dos tipus (per exemple Foc i Volador), i un tipus el tenen molts Pokémon.
+> - N’ha de facilitar el procés automàtic de les dades per part d’un programa informàtic.
 >
-> A Te a la motxilla he posat `}o--o{` perquè un entrenador pot tenir molts objectes diferents, i un mateix objecte (com una Poció) el poden tenir molts entrenadors.
+> - N’ha de facilitar la representació (o la interpretació) de les dades emmagatzemades.
 
-```mermaid
-erDiagram
-        POKEMON }o--o{ MOVIMENT : apren
-        POKEMON }o--o{ TIPUS : "es de tipus"
-        ENTRENADOR }o--o{ OBJECTE : "te a la motxilla"
-```
+## Un cop hàgiu acabat, prepareu una presentació per a explicar el següent:
 
-#### Relacions Reflexives
+1. Una introducció als llenguatges de marques: orígens, per a què es fan servir, etc.
 
-Passen quan una entitat es relaciona amb ella mateixa.
+   - Origen: les anotacions als manuscrits abans d'enviar-los a impremta (tipus de lletra, mida…).
+   - Fan servir marques (etiquetes) dins d'un text pla.
+   - Separen les dades de l'estructura i dels estils.
+   - Sorgeixen de la necessitat d'explotar la informació i presentar-la de forma automatitzada; calen estàndards.
 
-> Exemple: la relació Es fort contra va de Tipus a Tipus, perquè un tipus és fort contra altres tipus (Aigua és fort contra Foc) i alhora altres tipus són forts contra ell. He posat `}o--o{` perquè és de molts a molts. He posat el nom entre cometes (`"es fort contra"`) perquè té espais.
+   | Any | Llenguatge | Qui / què |
+   |---|---|---|
+   | 1960 | GML | Charles Goldfarb (IBM). Llenguatge d'ús general |
+   | 1970–1980 | TeX | Donald Knuth. Revistes de matemàtiques; complex |
+   | 1980 | Scribe | Brian Reid. Separa contingut i estil |
+   | 1986 | SGML | Estàndard ISO |
+   | 1991 | HTML | Tim Berners-Lee (CERN). Primeres pàgines web |
+   | 1998 | XML | W3C. Simplifica SGML; regles estrictes i extensible |
 
-```mermaid
-erDiagram
-        TIPUS }o--o{ TIPUS : "es fort contra"
-```
+   **Tipus**
 
-## Diagrama E/R complet
+   - Presentació i procediment: separen les dades de la seva maquetació; pensats per a l'usuari (Scribe, TeX, HTML).
+   - Descriptius o semàntics: separen les dades de la seva definició; pensats per a una màquina; no indiquen com ni en quin ordre es presenten (XML, YAML, JSON).
 
-Aquí hi ha el diagrama sencer, amb totes les entitats, els atributs i les relacions.
+   **Àrees d'ús:** ERPs, BBDD, sistemes operatius, sistemes de comunicacions, aplicacions ofimàtiques.
 
-```mermaid
-erDiagram
+---
 
-        ENTRENADOR {
-                string DNI PK
-                string Nom "NOT NULL"
-                string Cognom
-                int Diners
-                int Medalles
-        }
+2. Una introducció al vostre llenguatge de marques, explicació de les regles que heu definit.
 
-        POKEMON {
-                string Codi PK
-                string Nom "NOT NULL"
-                string Mote
-                int Nivell "NOT NULL"
-                int Experiencia
-                boolean Shiny
-                float Pes
-                float Alcada
-                int Estadistiques_HP
-                int Estadistiques_Atac
-                int Estadistiques_Defensa
-                int Estadistiques_Velocitat
-        }
+   **DPC · Dades amb Punt i Coma.** Parteix de l'exemple de la classe (dades separades per punt i coma). És un fitxer de text pla amb les dades dels Pokémon: nom, element, vida i dany.
 
-        MOVIMENT {
-                string Codi PK
-                string Nom "NOT NULL"
-                int Potencia
-                int Precisio
-                int PP
-                string Categoria "NOT NULL"
-        }
+   1. Text pla, codificació UTF-8.
+   2. La 1a fila són les capçaleres (noms dels camps).
+   3. La resta de files són dades (un registre per fila).
+   4. Separador de camps: `;`
+   5. Separador de registre: `\r\n`
+   6. Tipus de dada, al final del camp: `\t` = string, `\f` = float.
 
-        TIPUS {
-                string Codi PK
-                string Nom "NOT NULL"
-        }
+---
 
-        OBJECTE {
-                string Codi PK
-                string Nom "NOT NULL"
-                string Descripcio
-                int Preu
-                boolean Es_Consumible "NOT NULL"
-        }
+3. Classificar el vostre llenguatge de programació (procedimental i presentació; descriptiu o semàntic) i justificar aquesta classificació.
 
-        ENTRENADOR ||--o| POKEMON : "te de company"
+   **Descriptiu o semàntic.**
 
-        ENTRENADOR ||--o{ POKEMON : captura
+   - No indica com s'han de mostrar les dades ni en quin ordre.
+   - Separa les dades de la seva definició: capçaleres i marques de tipus.
+   - Pensat perquè un programa el processi de forma automàtica.
+   - No és de presentació i procediment: no hi ha cap marca de format.
 
-        TIPUS ||--o{ MOVIMENT : defineix
+---
 
-        POKEMON }o--o{ MOVIMENT : apren
+4. Explicar un cas d’ús en el qual es podria fer servir el vostre llenguatge de marques.
 
-        POKEMON }o--o{ TIPUS : "es de tipus"
+   Intercanviar llistes de Pokémon (nom, element, vida i dany) entre dos programes, per exemple un joc de combats que llegeix les dades dels Pokémon. Emissor i receptor només han de conèixer les regles, i el fitxer el llegeix un programa però també el pot entendre una persona.
 
-        ENTRENADOR }o--o{ OBJECTE : "te a la motxilla"
+---
 
-        TIPUS }o--o{ TIPUS : "es fort contra"
-```
+5. Mostrar un exemple de com es fa servir el vostre llenguatge i explicar-lo.
+
+   ```text
+   nom;element;vida;dany
+   Pikachu\t;Elèctric\t;35\f;55\f
+   Charmander\t;Foc\t;39\f;52\f
+   Squirtle\t;Aigua\t;44\f;48\f
+   ```
+
+   | nom (string) | element (string) | vida (float) | dany (float) |
+   |---|---|---|---|
+   | Pikachu | Elèctric | 35 | 55 |
+   | Charmander | Foc | 39 | 52 |
+   | Squirtle | Aigua | 44 | 48 |
+
+   **Explicació**
+
+   1. La 1a fila són les capçaleres: nom, element, vida i dany (les metadades).
+   2. Cada fila següent és un registre, separat pel `\r\n`.
+   3. El `;` separa els camps de cada registre.
+   4. `\t` indica text (string) i `\f` un decimal (float): «Pikachu» és text i 35 és un nombre.
+
+---
+
+6. Explicar un cas d’ús en el qual el vostre llenguatge de marques no seria el més adient.
+
+   - **Un document amb format:** DPC no té cap marca de presentació; no es poden indicar títols, negretes ni imatges. Millor: HTML o TeX.
+   - **Dades amb estructura niada:** només té files i columnes; no pot representar, per exemple, un Pokémon amb diversos atacs, cadascun amb el seu element i dany. Millor: XML.
+
+---
+
+7. Justificar per què el vostre llenguatge es pot classificar com "de marques".
+
+   - **Basat en text pla:** fitxer de text, codificat en UTF-8.
+   - **Fa servir metadades:** capçaleres i marques de tipus (`\t`, `\f`) descriuen les dades.
+   - **Facilita el procés automàtic:** un programa separa per `;` i `\r\n` i sap el tipus de cada camp.
+   - **Facilita la interpretació:** les regles pactades expliquen com llegir i representar les dades.
+
+---
+
+## Rúbrica d’avaluació
+
+> [!CAUTION]
+> **Atenció:** l’incompliment de les instruccions de lliurament impliquen la NO correcció de la pràctica i una nota de 0 punts. Cal seguir totes les instruccions estrictament al peu de la lletra.
+
+|  | 0 punts | 0,5 punts | 1 punt |
+|---|---|---|---|
+| **Introducció als llenguatges de marques.** | No s’ha realitzat o conté errors molt greus. | Explicació superficial o amb errors lleus. | Explicació clara, detallada i correcta. |
+| **Explicació del llenguatge i regles d’ús** | No s’ha realitzat o conté errors molt greus. | Explicació superficial o amb errors lleus. | Explicació clara, detallada i correcta. |
+| **Cas d’ús (si s’adapta)** | No s’ha realitzat o conté errors molt greus. | Explicació superficial o amb errors lleus. | Explicació clara, detallada i correcta. |
+| **Cas d’ús (no s’adapta)** | No s’ha realitzat o conté errors molt greus. | Explicació superficial o amb errors lleus. | Explicació clara, detallada i correcta. |
+| **Exemple** | No s’ha realitzat o conté errors molt greus. | Explicació superficial o amb errors lleus. | Explicació clara, detallada i correcta. |
+| **Classificació** | No s’ha realitzat o conté errors molt greus. | Explicació superficial o amb errors lleus. | Explicació clara, detallada i correcta. |
+| **Justificació llenguatge de marques.** | No s’ha realitzat o conté errors molt greus. | Explicació superficial o amb errors lleus. | Explicació clara, detallada i correcta. |
+| **Estil de les transparències** | No s’ha realitzat o conté erros greus. | Pobre, poc treballat o es nota que s’ha fet a correcuita. | Correcte, agradable a la vista i homogeni. |
+| **Temps** | Menys de 3 minuts o més de 7 minuts. | Menys de 4 minuts o més de 6 minuts. | Exactament o aproximadament 5 minuts (2:30 per alumne). |
+| **Presència sobre l’escenari** | No ha presentat | Li costa expressar-se en públic i mostra dificultats per fer-se entendre. | S’expressa amb naturalitat i claredat. Se’l veu còmode quan parla en públic. |
