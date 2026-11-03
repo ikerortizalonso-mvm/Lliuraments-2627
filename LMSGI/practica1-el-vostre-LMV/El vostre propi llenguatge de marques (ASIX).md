@@ -202,6 +202,6 @@ Només té files i columnes: no pot representar, per exemple, un Pokémon amb di
 
 **Iker Ortiz, David Ballesteros i Mohamed Chafiq**
 
-# Link de la presentació!
+# Link de la presentació
 ## https://canva.link/12u9a1x9g0vn6dz
 
