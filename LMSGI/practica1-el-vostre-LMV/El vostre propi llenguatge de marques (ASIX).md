@@ -3,7 +3,7 @@
 
 ## DPC · Dades Pokémon Compactes
 
-Llenguatges de marques i sistemes de gestió empresarial (M04) · Pràctica 1 · ASIX
+Llenguatges de marques i sistemes de gestió empresarial · Pràctica 1 · ASIX
 
 `t:Pikachu|t:Elèctric|n:35|n:55`
 
