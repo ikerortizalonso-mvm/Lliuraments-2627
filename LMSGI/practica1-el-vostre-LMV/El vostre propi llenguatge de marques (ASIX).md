@@ -108,11 +108,11 @@ Llenguatges de marques i sistemes de gestió empresarial · Pràctica 1 · ASIX
 
 **Per què?**
 
-- ✓ No indica com s'han de mostrar les dades ni en quin ordre
-- ✓ Separa les dades de la seva definició: capçaleres i marques de tipus
-- ✓ Pensat perquè un programa el processi de forma automàtica
+- No indica com s'han de mostrar les dades ni en quin ordre
+- Separa les dades de la seva definició: capçaleres i marques de tipus
+- Pensat perquè un programa el processi de forma automàtica
 
-✗ **No és de presentació i procediment:** no hi ha cap marca de format.
+**No és de presentació i procediment:** no hi ha cap marca de format.
 
 ---
 
@@ -120,7 +120,7 @@ Llenguatges de marques i sistemes de gestió empresarial · Pràctica 1 · ASIX
 
 *Intercanviar llistes de Pokémon entre dos programes*
 
-**Programa emissor** (genera les dades) → **Fitxer DPC** (`pokemons.dpc`) → **Programa receptor** (p. ex. un joc de combats)
+**Programa emissor** (genera les dades) - **Fitxer DPC** (`pokemons.dpc`) - **Programa receptor** (p. ex. un joc de combats)
 
 - Intercanviar llistes de Pokémon (nom, element, vida i dany) entre dos programes
 - Per exemple, un joc de combats que llegeix les dades dels Pokémon
@@ -169,13 +169,13 @@ t:Squirtle|t:Aigua|n:44|n:48
 
 *Situacions en què DPC es queda curt*
 
-### ✗ Un document amb format
+### Un document amb format
 
 DPC no té cap marca de presentació: no es poden indicar títols, negretes ni imatges.
 
 **Millor:** HTML o TeX
 
-### ✗ Dades amb estructura niada
+### Dades amb estructura niada
 
 Només té files i columnes: no pot representar, per exemple, un Pokémon amb diversos atacs, cadascun amb el seu element i dany.
 
@@ -189,10 +189,10 @@ Només té files i columnes: no pot representar, per exemple, un Pokémon amb di
 
 | Requisit | Com el compleix DPC |
 |---|---|
-| ✓ **Basat en text pla** | Fitxer de text, codificat en UTF-8 |
-| ✓ **Fa servir metadades** | Capçaleres i marques de tipus (`t:`, `n:`) descriuen les dades |
-| ✓ **Facilita el procés automàtic** | Un programa separa per `\|` i pel salt de línia i sap el tipus de cada camp |
-| ✓ **Facilita la interpretació** | Les regles pactades expliquen com llegir i representar les dades |
+| **Basat en text pla** | Fitxer de text, codificat en UTF-8 |
+| **Fa servir metadades** | Capçaleres i marques de tipus (`t:`, `n:`) descriuen les dades |
+| **Facilita el procés automàtic** | Un programa separa per `\|` i pel salt de línia i sap el tipus de cada camp |
+| **Facilita la interpretació** | Les regles pactades expliquen com llegir i representar les dades |
 
 ---
 
